@@ -1,45 +1,30 @@
 package PaqC01;
 
-import java.util.Arrays;
-
 public class HUB {
-    private double [][] contenedores;
-    private static final int columnas = 3;
-    private int filas;
+    private Contenedor[][] contenedores;
 
-    public void Matriz(int filas, int columnas){
-        this.filas = filas;
-        this.contenedores = new double[filas][columnas];
+    public HUB(Contenedor[][] contenedores) {
+        this.contenedores = new Contenedor[10][12];
     }
 
-
-    public HUB(double[][] contenedores, int filas) {
-        this.contenedores = contenedores;
-        this.filas = filas;
-    }
-
-    public double[][] getContenedores() {
+    public Contenedor[][] getContenedores() {
         return contenedores;
     }
 
-    public void setContenedores(double[][] contenedores) {
+    public void setContenedores(Contenedor[][] contenedores) {
         this.contenedores = contenedores;
     }
 
-    public int getFilas() {
-        return filas;
-    }
-
-    public void setFilas(int filas) {
-        this.filas = filas;
-    }
-
-
     @Override
-    public String toString() {
-        return "HUB{" +
-                "contenedores=" + Arrays.toString(contenedores) +
-                ", filas=" + filas +
-                '}';
+    public Contenedor toString() {
+        Contenedor plano = new Contenedor();
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 12; j++) {
+                plano = plano + String.valueOf(contenedores[i][j]) + " ";
+            }
+            plano = plano + "\n";
+        }
+        return plano;
     }
 }
