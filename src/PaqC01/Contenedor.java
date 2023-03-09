@@ -1,60 +1,67 @@
 package PaqC01;
 
 public class Contenedor {
-    private int numeroIdentf;
-    private int pesoCont;
-    private String pais;
-    private boolean aduanas;
+
+    private int NumeroIdentf;
+    private int PesoCont;
+    private String Pais;
+    boolean aduanas;
     private int prioridad;
     private String descripcion;
-    private String nombreEmpresaEnvia;
-    private String nombreEmpresaRecibe;
+    private String NombreEmpresaEnvia;
+    private String NombreEmpresaRecibe;
+
 
     public Contenedor(int numeroIdentf, int pesoCont, String pais, boolean aduanas, int prioridad, String descripcion, String nombreEmpresaEnvia, String nombreEmpresaRecibe) {
-        this.numeroIdentf = numeroIdentf;
-        this.pesoCont = pesoCont;
-        this.pais = pais;
+        NumeroIdentf = numeroIdentf;
+        PesoCont = pesoCont;
+        Pais = pais;
         this.aduanas = aduanas;
         this.prioridad = prioridad;
-        if(descripcion.length() > 100) {
-            this.descripcion = descripcion.substring(0, 100);
-        } else {
-            this.descripcion = descripcion;
+        this.descripcion = descripcion;
+        NombreEmpresaEnvia = nombreEmpresaEnvia;
+        NombreEmpresaRecibe = nombreEmpresaRecibe;
+    }
+
+    public void apilarContenedor(int prioridad){
+
+        int contenedor1 = 0, contenedor2 = 0, contenedor3 = 0;
+
+        if (prioridad == 1){
+            contenedor1 += 1;
         }
-        if(nombreEmpresaEnvia.length() > 20) {
-            this.nombreEmpresaEnvia = nombreEmpresaEnvia.substring(0, 20);
-        } else {
-            this.nombreEmpresaEnvia = nombreEmpresaEnvia;
+        if (prioridad == 2){
+            contenedor2 += 1;
         }
-        if(nombreEmpresaRecibe.length() > 20) {
-            this.nombreEmpresaRecibe = nombreEmpresaRecibe.substring(0, 20);
-        } else {
-            this.nombreEmpresaRecibe = nombreEmpresaRecibe;
+        if (prioridad == 3){
+            contenedor3 += 1;
         }
     }
 
+
+
     public int getNumeroIdentf() {
-        return numeroIdentf;
+        return NumeroIdentf;
     }
 
     public void setNumeroIdentf(int numeroIdentf) {
-        this.numeroIdentf = numeroIdentf;
+        NumeroIdentf = numeroIdentf;
     }
 
     public int getPesoCont() {
-        return pesoCont;
+        return PesoCont;
     }
 
     public void setPesoCont(int pesoCont) {
-        this.pesoCont = pesoCont;
+        PesoCont = pesoCont;
     }
 
     public String getPais() {
-        return pais;
+        return Pais;
     }
 
     public void setPais(String pais) {
-        this.pais = pais;
+        Pais = pais;
     }
 
     public boolean isAduanas() {
@@ -82,18 +89,18 @@ public class Contenedor {
     }
 
     public String getNombreEmpresaEnvia() {
-        return nombreEmpresaEnvia;
+        return NombreEmpresaEnvia;
     }
 
     public void setNombreEmpresaEnvia(String nombreEmpresaEnvia) {
-        this.nombreEmpresaEnvia = nombreEmpresaEnvia;
+        NombreEmpresaEnvia = nombreEmpresaEnvia;
     }
 
     public String getNombreEmpresaRecibe() {
-        return nombreEmpresaRecibe;
+        return NombreEmpresaRecibe;
     }
 
     public void setNombreEmpresaRecibe(String nombreEmpresaRecibe) {
-        this.nombreEmpresaRecibe = nombreEmpresaRecibe;
+        NombreEmpresaRecibe = nombreEmpresaRecibe;
     }
 }
