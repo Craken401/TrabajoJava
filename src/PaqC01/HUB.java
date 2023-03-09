@@ -14,4 +14,61 @@ public class HUB {
     public void setContenedores(Contenedor[][] contenedores) {
         this.contenedores = contenedores;
     }
+
+    public void apilaContenedor(Contenedor contenedor) {
+        int prioridad = contenedor.getPrioridad();
+
+        if(prioridad == 1) {
+            for(int i = 9; i >= 0; i--) {
+                if(contenedores[i][0] == null) contenedores[i][0] = contenedor;
+            }
+        }
+
+        if(prioridad == 2) {
+            for(int i = 9; i >= 0; i--) {
+                if(contenedores[i][1] == null) contenedores[i][1] = contenedor;
+            }
+        }
+
+        if(prioridad == 3) {
+            for(int i = 9; i >= 0; i--) {
+                for(int j = 2; j < 12; j++) {
+                    if (contenedores[i][j] == null) contenedores[i][j] = contenedor;
+                }
+            }
+        }
+    }
+
+    public void desapilaContenedor(int columna) {
+        for(int i = 0; i < 10; i++) {
+            if(contenedores[i][columna] != null) {
+                contenedores[i][columna] = null;
+                break;
+            }
+        }
+    }
+
+    public String mostrarDatos(int numeroIdentf) {
+        String conf;
+
+        for(int i = 0; i < 10; i++) {
+            for(int j = 0; j < 12; j++) {
+                if(numeroIdentf == contenedores[i][j].getNumeroIdentf()) {
+
+                    if(contenedores[i][j].isAduanas() == true) {
+                        conf = "Sí";
+                    } else conf = "No";
+
+                    return "Peso: " + contenedores[i][j].getPesoCont() + "\n" +
+                            "País: " + contenedores[i][j].getPais() + "\n" +
+                            "Inspección en aduanas: " + conf + "\n" +
+                            "Prioridad: " + contenedores[i][j].getPrioridad() + "\n" +
+                            "Descripción: " + contenedores[i][j].getDescripcion() + "\n" +
+                            "Empresa emisora: " + contenedores[i][j].getNombreEmpresaEnvia() + "\n" +
+                            "Empresa receptora: " + contenedores[i][j].getNombreEmpresaRecibe() + "\n";
+                }
+            }
+        }
+        return "No hay ningún contenedor almacenado con ese número de identificación";
+    }
 }
