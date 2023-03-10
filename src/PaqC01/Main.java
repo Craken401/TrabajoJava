@@ -12,12 +12,15 @@ public class Main {
         // Crear un HUB y agregar contenedores
         HUB hub1 = new HUB(new Contenedor[10][12]);
 
+        // Mostrar la disposición actual de los contenedores en el HUB
+        System.out.println(hub1.toStringHUB());
+
         hub1.apilaContenedor(cont1);
         hub1.apilaContenedor(cont2);
         hub1.apilaContenedor(cont3);
 
         // Mostrar datos de un contenedor específico
-        System.out.println(hub1.mostrarDatos(3));
+        System.out.println(hub1.mostrarDatos(2));
 
         // Mostrar la cantidad de contenedores por país
         System.out.println("Cantidad de contenedores procedentes del pais: " + hub1.ContenedoresPorPais("España"));

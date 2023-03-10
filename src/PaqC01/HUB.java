@@ -95,11 +95,11 @@ public class HUB {
 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 12; j++) {
-                if (contenedores[i][j].getPais() == pais) {
+                if (contenedores[i][j] != null && pais.equals(contenedores[i][j].getPais())) {
                     cantidad += 1;
                 }
             }
         }
-        return cantidad / 10;
+        return cantidad;
     }
 }
