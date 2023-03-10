@@ -95,8 +95,4 @@ public class DiseñoContenedoresP2 extends  JFrame {
             }
         });
     }
-
-    public static void main(String[] args) {
-        DiseñoContenedoresP2 cont2 = new DiseñoContenedoresP2();
-    }
 }

@@ -1,5 +1,7 @@
 package PaqC01;
 
+import java.util.Objects;
+
 public class HUB {
     private Contenedor[][] contenedores;
 
@@ -15,24 +17,40 @@ public class HUB {
         this.contenedores = contenedores;
     }
 
+    public String toStringHUB() {
+        String result = "";
+        for (int i = 0; i < contenedores.length; i++) {
+            for (int j = 0; j < contenedores[i].length; j++) {
+                if (contenedores[i][j] != null) {
+                    result += "O";  //O significa ocupado
+                } else {
+                    result += "V";  //V significa vacío
+                }
+                result += "\t";
+            }
+            result += "\n";
+        }
+        return result;
+    }
+
     public void apilaContenedor(Contenedor contenedor) {
         int prioridad = contenedor.getPrioridad();
 
-        if(prioridad == 1) {
-            for(int i = 9; i >= 0; i--) {
-                if(contenedores[i][0] == null) contenedores[i][0] = contenedor;
+        if (prioridad == 1) {
+            for (int i = 9; i >= 0; i--) {
+                if (contenedores[i][0] == null) contenedores[i][0] = contenedor;
             }
         }
 
-        if(prioridad == 2) {
-            for(int i = 9; i >= 0; i--) {
-                if(contenedores[i][1] == null) contenedores[i][1] = contenedor;
+        if (prioridad == 2) {
+            for (int i = 9; i >= 0; i--) {
+                if (contenedores[i][1] == null) contenedores[i][1] = contenedor;
             }
         }
 
-        if(prioridad == 3) {
-            for(int i = 9; i >= 0; i--) {
-                for(int j = 2; j < 12; j++) {
+        if (prioridad == 3) {
+            for (int i = 9; i >= 0; i--) {
+                for (int j = 2; j < 12; j++) {
                     if (contenedores[i][j] == null) contenedores[i][j] = contenedor;
                 }
             }
@@ -40,37 +58,22 @@ public class HUB {
     }
 
     public void desapilaContenedor(int columna) {
-        for(int i = 0; i < 10; i++) {
-            if(contenedores[i][columna] != null) {
+        for (int i = 0; i < 10; i++) {
+            if (contenedores[i][columna] != null) {
                 contenedores[i][columna] = null;
                 break;
             }
         }
     }
 
-    public int ContenedoresPorPais(String pais) {
-        int cantidad = 0;
-
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 12; j++) {
-                if (contenedores[i][j].getPais().equals(pais)) {
-                    cantidad += 1;
-                }
-            }
-        }
-
-        return cantidad;
-    }
-
-
     public String mostrarDatos(int numeroIdentf) {
         String conf;
 
-        for(int i = 0; i < 10; i++) {
-            for(int j = 0; j < 12; j++) {
-                if(numeroIdentf == contenedores[i][j].getNumeroIdentf()) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 12; j++) {
+                if (numeroIdentf == contenedores[i][j].getNumeroIdentf()) {
 
-                    if(contenedores[i][j].isAduanas() == true) {
+                    if (contenedores[i][j].isAduanas() == true) {
                         conf = "Sí";
                     } else conf = "No";
 
@@ -87,25 +90,16 @@ public class HUB {
         return "No hay ningún contenedor almacenado con ese número de identificación";
     }
 
+    public int ContenedoresPorPais(String pais) {
+        int cantidad = 0;
 
-    public String toStringHUB() {
-        String result = "";
-        for (int i = 0; i < contenedores.length; i++) {
-            for (int j = 0; j < contenedores[i].length; j++) {
-                if (contenedores[i][j] != null) {
-                    result += contenedores[i][j].getNumeroIdentf();
-                } else {
-                    result += "O";
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 12; j++) {
+                if (contenedores[i][j].getPais() == pais) {
+                    cantidad += 1;
                 }
-                result += "\t";
             }
-            result += "\n";
         }
-        return result;
+        return cantidad / 10;
     }
-
-
-
-
 }
-
