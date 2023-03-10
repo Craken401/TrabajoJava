@@ -48,6 +48,21 @@ public class HUB {
         }
     }
 
+    public int ContenedoresPorPais(String pais) {
+        int cantidad = 0;
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 12; j++) {
+                if (contenedores[i][j].getPais().equals(pais)) {
+                    cantidad += 1;
+                }
+            }
+        }
+
+        return cantidad;
+    }
+
+
     public String mostrarDatos(int numeroIdentf) {
         String conf;
 
@@ -71,4 +86,26 @@ public class HUB {
         }
         return "No hay ningún contenedor almacenado con ese número de identificación";
     }
+
+
+    public String toStringHUB() {
+        String result = "";
+        for (int i = 0; i < contenedores.length; i++) {
+            for (int j = 0; j < contenedores[i].length; j++) {
+                if (contenedores[i][j] != null) {
+                    result += contenedores[i][j].getNumeroIdentf();
+                } else {
+                    result += "O";
+                }
+                result += "\t";
+            }
+            result += "\n";
+        }
+        return result;
+    }
+
+
+
+
 }
+
